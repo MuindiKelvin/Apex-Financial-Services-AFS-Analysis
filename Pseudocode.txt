@@ -1,0 +1,38 @@
+Install libraries: tabula-py, pandas, openpyxl
+
+Load Data
+    Load PDF data into df_pdf using tabula.read_pdf()
+    Load Excel data into df_excel using pandas.read_excel()
+
+Data Validation and Cleaning
+    Check for missing values in df_pdf and df_excel
+    Fill missing values in df_pdf using forward fill
+    Drop rows with missing values in df_excel
+
+Merge Data
+    Merge df_pdf and df_excel on 'Loan_ID' into df_merged
+Exploratory Data Analysis (EDA)
+    Calculate total amount loaned
+        total_amount_loaned = df_merged['Loan Amount'].sum()
+
+    Calculate average amount loaned
+        average_amount_loaned = df_merged['Loan Amount'].mean()
+
+    Calculate average loan term
+        average_loan_term = df_merged['Loan Term'].mean()
+
+    Breakdown of applicants by gender and approval status
+        gender_breakdown = df_merged.groupby('Gender')['Approval Status'].value_counts(normalize=True).unstack()
+
+    Identify maximum and minimum loan amounts
+        max_loan_amount = df_merged['Loan Amount'].max()
+        min_loan_amount = df_merged['Loan Amount'].min()
+
+    Calculate percentage of self-employed loan approvals
+        self_employed_approvals = df_merged[df_merged['Employment Status'] == 'Self-employed']['Approval Status'].value_counts(normalize=True)
+
+    Optional Analyses
+        Plot income distribution histogram
+        Identify top applicants by loan amount
+        Plot property area distribution
+
